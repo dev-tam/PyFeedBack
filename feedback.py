@@ -8,12 +8,22 @@ from tkinter import messagebox
 class Feedback:
     def __init__(self, master):
 
+        master.title('Feedback Form')
+        master.resizable(False, False)
+        master.configure(background='#E1D8B9')
+
+        self.style = ttk.Style()
+        self.style.configure('TFrame', background='#E1D8B9')
+        self.style.configure('TButton', backgroun='#E1D8B9')
+        self.style.configure('TLabel', background='#E1D8B9', font=('Waree', 11))
+        self.style.configure('Header.TLabel', background='#E1D8B9', font=('Waree', 18,'bold'))
+
         self.frame_header = ttk.Frame(master)
         self.frame_header.pack()
 
         self.logo = PhotoImage(file='images/logo.png')
         ttk.Label(self.frame_header, image=self.logo).grid(row=0, column=0, rowspan=2)
-        ttk.Label(self.frame_header, text="Thanks for Exploring!").grid(row=0, column=1)
+        ttk.Label(self.frame_header, text="Thanks for Exploring!", style='Header.TLabel').grid(row=0, column=1)
         ttk.Label(self.frame_header, wraplength=300,
                 text=("We are glad you chose Explore California for your recent adventure. "
                   "Please tell us what you thought about the 'Desert to Sea' tour")).grid(row=1, column=1)
@@ -25,9 +35,9 @@ class Feedback:
         ttk.Label(self.frame_content, text='Email:').grid(row=0,column=1, sticky='sw')
         ttk.Label(self.frame_content, text='Comments:').grid(row=2, column=0, sticky='sw')
 
-        self.entry_name = ttk.Entry(self.frame_content, width=24)
-        self.entry_email = ttk.Entry(self.frame_content, width=24)
-        self.text_comments = Text(self.frame_content, width=50, height=10)
+        self.entry_name = ttk.Entry(self.frame_content, width=24, font=('Waree',10))
+        self.entry_email = ttk.Entry(self.frame_content, width=24, font=('Waree',10))
+        self.text_comments = Text(self.frame_content, width=50, height=10, font='Waree')
 
         self.entry_name.grid(row=1, column=0)
         self.entry_email.grid(row=1, column=1)
